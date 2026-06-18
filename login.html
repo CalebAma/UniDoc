@@ -18,12 +18,20 @@
         .btn-primary:hover {
             background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
         }
+        /* Touch-friendly styles */
+        input, button, select {
+            min-height: 48px !important;
+            font-size: 16px !important;
+        }
+        a {
+            touch-action: manipulation;
+        }
     </style>
 </head>
 <body class="gradient-bg min-h-screen flex items-center justify-center p-4">
     <div class="max-w-md w-full">
         <div class="text-center mb-8">
-            <a href="index.html" class="inline-flex items-center space-x-2 mb-6">
+            <a href="index.html" class="inline-flex items-center space-x-2 mb-6 touch-manipulation">
                 <div class="w-12 h-12 rounded-xl btn-primary flex items-center justify-center">
                     <i class="fas fa-print text-white text-2xl"></i>
                 </div>
@@ -32,7 +40,7 @@
             <h1 class="text-3xl font-bold text-white mb-2">Welcome back</h1>
             <p class="text-slate-400">Sign in to your account</p>
         </div>
-        <div class="bg-white rounded-2xl shadow-2xl p-8">
+        <div class="bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
             <form id="loginForm">
                 <div class="space-y-5">
                     <div>
@@ -41,7 +49,7 @@
                             <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                 <i class="fas fa-envelope"></i>
                             </span>
-                            <input type="email" id="loginEmail" required class="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="you@example.com">
+                            <input type="email" id="loginEmail" required class="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="you@example.com" autocomplete="email">
                         </div>
                     </div>
                     <div>
@@ -53,10 +61,10 @@
                             <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
                                 <i class="fas fa-lock"></i>
                             </span>
-                            <input type="password" id="loginPassword" required class="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="••••••••">
+                            <input type="password" id="loginPassword" required class="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="••••••••" autocomplete="current-password">
                         </div>
                     </div>
-                    <button type="submit" class="w-full btn-primary text-white py-3 rounded-xl font-semibold hover:shadow-lg transition">
+                    <button type="submit" class="w-full btn-primary text-white py-4 rounded-xl font-semibold hover:shadow-lg transition text-lg">
                         Sign In
                     </button>
                 </div>
@@ -65,8 +73,8 @@
                 Don't have an account? <a href="register.html" class="text-blue-600 font-semibold hover:text-blue-800">Sign up</a>
             </div>
             <div class="mt-4 text-center">
-                <a href="index.html" class="text-sm text-gray-500 hover:text-gray-700">
-                    <i class="fas fa-arrow-left mr-1"></i> Back to home
+                <a href="index.html" class="text-sm text-gray-500 hover:text-gray-700 inline-flex items-center">
+                    <i class="fas fa-arrow-left mr-2"></i> Back to home
                 </a>
             </div>
         </div>
@@ -76,7 +84,7 @@
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const email = document.getElementById('loginEmail').value;
+            const email = document.getElementById('loginEmail').value.trim().toLowerCase();
             const password = document.getElementById('loginPassword').value;
             
             const users = JSON.parse(localStorage.getItem('unidoc_users') || '[]');
@@ -84,10 +92,10 @@
             
             if (user) {
                 localStorage.setItem('unidoc_currentUser', JSON.stringify(user));
-                alert('Login successful!');
+                alert('Login successful! Welcome back!');
                 window.location.href = 'dashboard.html';
             } else {
-                alert('Invalid email or password!');
+                alert('Invalid email or password! Please check your credentials and try again.');
             }
         });
     </script>

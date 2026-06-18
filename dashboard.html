@@ -23,6 +23,29 @@
             border-color: #3b82f6;
             background-color: #eff6ff;
         }
+        /* Touch-friendly styles */
+        input, button, select, .drop-zone {
+            min-height: 48px !important;
+            font-size: 16px !important;
+        }
+        a {
+            touch-action: manipulation;
+        }
+        /* Mobile sidebar */
+        @media (max-width: 768px) {
+            aside {
+                position: fixed !important;
+                left: 0;
+                top: 0;
+                height: 100% !important;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+                z-index: 50;
+            }
+            aside.open {
+                transform: translateX(0);
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -31,6 +54,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
+                    <button class="md:hidden mr-4 p-2 text-gray-600" onclick="toggleSidebar()">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
                     <a href="index.html" class="flex items-center space-x-2">
                         <div class="w-10 h-10 rounded-xl btn-primary flex items-center justify-center">
                             <i class="fas fa-print text-white text-xl"></i>
@@ -300,6 +326,24 @@
             document.getElementById('totalOrders').textContent = userOrders.length;
             document.getElementById('completedOrders').textContent = userOrders.filter(o => o.status === 'collected').length;
             document.getElementById('pendingOrders').textContent = userOrders.filter(o => o.status === 'pending' || o.status === 'printing').length;
+        }
+        
+        // Toggle sidebar for mobile
+        function toggleSidebar() {
+            const sidebar = document.querySelector('aside');
+            sidebar.classList.toggle('open');
+            
+            // Add/remove overlay
+            if (sidebar.classList.contains('open')) {
+                const overlay = document.createElement('div');
+                overlay.id = 'sidebar-overlay';
+                overlay.className = 'fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden';
+                overlay.onclick = toggleSidebar;
+                document.body.appendChild(overlay);
+            } else {
+                const overlay = document.getElementById('sidebar-overlay');
+                if (overlay) overlay.remove();
+            }
         }
         
         // Logout
