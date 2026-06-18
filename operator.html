@@ -63,7 +63,7 @@
 
         <!-- Main Content -->
         <main class="flex-1 p-6">
-            <div class="max-w-6xl mx-auto">
+            <div class="max-w-7xl mx-auto">
                 <div class="mb-8">
                     <h1 class="text-2xl font-bold text-gray-800 mb-2">Print Queue</h1>
                     <p class="text-gray-600">Manage incoming print orders</p>
@@ -72,19 +72,19 @@
                 <!-- Stats Cards -->
                 <div class="grid md:grid-cols-4 gap-6 mb-8">
                     <div class="bg-white rounded-2xl p-6 shadow-sm">
-                        <div class="text-3xl font-bold text-yellow-600">3</div>
+                        <div class="text-3xl font-bold text-yellow-600" id="pendingCount">0</div>
                         <div class="text-gray-500 text-sm">Pending</div>
                     </div>
                     <div class="bg-white rounded-2xl p-6 shadow-sm">
-                        <div class="text-3xl font-bold text-blue-600">2</div>
+                        <div class="text-3xl font-bold text-blue-600" id="printingCount">0</div>
                         <div class="text-gray-500 text-sm">Printing</div>
                     </div>
                     <div class="bg-white rounded-2xl p-6 shadow-sm">
-                        <div class="text-3xl font-bold text-green-600">5</div>
+                        <div class="text-3xl font-bold text-green-600" id="readyCount">0</div>
                         <div class="text-gray-500 text-sm">Ready</div>
                     </div>
                     <div class="bg-white rounded-2xl p-6 shadow-sm">
-                        <div class="text-3xl font-bold text-gray-700">124</div>
+                        <div class="text-3xl font-bold text-gray-700" id="totalCount">0</div>
                         <div class="text-gray-500 text-sm">Today</div>
                     </div>
                 </div>
@@ -96,88 +96,17 @@
                             <h2 class="text-lg font-semibold text-gray-800">Incoming Orders</h2>
                             <div class="flex gap-3">
                                 <input type="text" placeholder="Search orders..." class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
-                                <select class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
-                                    <option>All Status</option>
-                                    <option>Pending</option>
-                                    <option>Printing</option>
-                                    <option>Ready</option>
+                                <select class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" onchange="filterQueue(this.value)">
+                                    <option value="all">All Status</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="printing">Printing</option>
+                                    <option value="ready">Ready</option>
                                 </select>
                             </div>
                         </div>
                     </div>
-                    <div class="divide-y">
-                        <!-- Order 1 -->
-                        <div class="p-6 hover:bg-gray-50">
-                            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                                <div class="flex items-center gap-4">
-                                    <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
-                                        <i class="fas fa-file-pdf text-yellow-600 text-xl"></i>
-                                    </div>
-                                    <div>
-                                        <div class="font-semibold text-gray-800">Assignment.pdf</div>
-                                        <div class="text-sm text-gray-500">Order #PN12348 • Sarah Johnson • 10:45 AM</div>
-                                        <div class="flex gap-4 mt-1 text-xs text-gray-500">
-                                            <span>B&W</span>
-                                            <span>2 copies</span>
-                                            <span>15 pages</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-medium">Pending</span>
-                                    <button onclick="updateStatus('PN12348', 'printing')" class="btn-primary text-white px-4 py-2 rounded-lg font-medium text-sm">Start Printing</button>
-                                    <button class="text-gray-500 hover:text-gray-700 p-2">
-                                        <i class="fas fa-download"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Order 2 -->
-                        <div class="p-6 hover:bg-gray-50">
-                            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                                <div class="flex items-center gap-4">
-                                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-                                        <i class="fas fa-file-powerpoint text-blue-600 text-xl"></i>
-                                    </div>
-                                    <div>
-                                        <div class="font-semibold text-gray-800">Presentation.pptx</div>
-                                        <div class="text-sm text-gray-500">Order #PN12347 • Mike Kim • 10:30 AM</div>
-                                        <div class="flex gap-4 mt-1 text-xs text-gray-500">
-                                            <span>Color</span>
-                                            <span>1 copy</span>
-                                            <span>25 pages</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Printing</span>
-                                    <button onclick="updateStatus('PN12347', 'ready')" class="bg-green-600 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-green-700">Mark Ready</button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Order 3 -->
-                        <div class="p-6 hover:bg-gray-50">
-                            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                                <div class="flex items-center gap-4">
-                                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                                        <i class="fas fa-file-word text-green-600 text-xl"></i>
-                                    </div>
-                                    <div>
-                                        <div class="font-semibold text-gray-800">Essay.docx</div>
-                                        <div class="text-sm text-gray-500">Order #PN12346 • Emily Williams • 10:00 AM</div>
-                                        <div class="flex gap-4 mt-1 text-xs text-gray-500">
-                                            <span>B&W</span>
-                                            <span>1 copy</span>
-                                            <span>10 pages</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex items-center gap-3">
-                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">Ready</span>
-                                    <button onclick="updateStatus('PN12346', 'collected')" class="bg-gray-600 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-gray-700">Mark Collected</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div id="queueList" class="divide-y">
+                        <!-- Orders will be rendered here -->
                     </div>
                 </div>
             </div>
@@ -185,9 +114,129 @@
     </div>
 
     <script>
-        function updateStatus(orderId, status) {
-            alert('Order ' + orderId + ' status updated to ' + status);
+        let currentFilter = 'all';
+        
+        // Update stats
+        function updateStats() {
+            const orders = JSON.parse(localStorage.getItem('unidoc_orders') || '[]');
+            const today = new Date().toDateString();
+            
+            document.getElementById('pendingCount').textContent = orders.filter(o => o.status === 'pending').length;
+            document.getElementById('printingCount').textContent = orders.filter(o => o.status === 'printing').length;
+            document.getElementById('readyCount').textContent = orders.filter(o => o.status === 'ready').length;
+            document.getElementById('totalCount').textContent = orders.filter(o => new Date(o.createdAt).toDateString() === today).length;
         }
+        
+        // Filter queue
+        function filterQueue(filter) {
+            currentFilter = filter;
+            renderQueue();
+        }
+        
+        // Update order status
+        function updateStatus(orderId, status) {
+            let orders = JSON.parse(localStorage.getItem('unidoc_orders') || '[]');
+            const index = orders.findIndex(o => o.id === orderId);
+            if (index !== -1) {
+                orders[index].status = status;
+                localStorage.setItem('unidoc_orders', JSON.stringify(orders));
+                updateStats();
+                renderQueue();
+            }
+        }
+        
+        // Render queue
+        function renderQueue() {
+            let orders = JSON.parse(localStorage.getItem('unidoc_orders') || '[]');
+            
+            if (currentFilter !== 'all') {
+                orders = orders.filter(o => o.status === currentFilter);
+            }
+            
+            orders = orders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            
+            const queueList = document.getElementById('queueList');
+            
+            if (orders.length === 0) {
+                queueList.innerHTML = `
+                    <div class="p-12 text-center">
+                        <div class="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-inbox text-4xl text-gray-400"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">No orders in queue</h3>
+                        <p class="text-gray-600">All orders have been processed</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            queueList.innerHTML = orders.map(order => {
+                let statusColor = '';
+                let statusBg = '';
+                let actionBtn = '';
+                
+                switch(order.status) {
+                    case 'pending':
+                        statusColor = 'text-yellow-700';
+                        statusBg = 'bg-yellow-100';
+                        actionBtn = `<button onclick="updateStatus('${order.id}', 'printing')" class="btn-primary text-white px-4 py-2 rounded-lg font-medium text-sm">Start Printing</button>`;
+                        break;
+                    case 'printing':
+                        statusColor = 'text-blue-700';
+                        statusBg = 'bg-blue-100';
+                        actionBtn = `<button onclick="updateStatus('${order.id}', 'ready')" class="bg-green-600 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-green-700">Mark Ready</button>`;
+                        break;
+                    case 'ready':
+                        statusColor = 'text-green-700';
+                        statusBg = 'bg-green-100';
+                        actionBtn = `<button onclick="updateStatus('${order.id}', 'collected')" class="bg-gray-600 text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-gray-700">Mark Collected</button>`;
+                        break;
+                    case 'collected':
+                        statusColor = 'text-gray-700';
+                        statusBg = 'bg-gray-100';
+                        actionBtn = '';
+                        break;
+                }
+                
+                const fileIcon = order.fileName.endsWith('.pdf') ? 'fa-file-pdf text-red-600' : 
+                                 order.fileName.endsWith('.docx') ? 'fa-file-word text-blue-600' : 
+                                 'fa-file-powerpoint text-orange-600';
+                
+                const date = new Date(order.createdAt);
+                const formattedDate = date.toLocaleDateString() + ' at ' + date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                
+                return `
+                    <div class="p-6 hover:bg-gray-50">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 ${statusBg} rounded-xl flex items-center justify-center">
+                                    <i class="fas ${fileIcon} text-2xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-800">${order.fileName}</div>
+                                    <div class="text-sm text-gray-500">Order #${order.id} • ${order.userName} • ${formattedDate}</div>
+                                    <div class="flex gap-4 mt-1 text-xs text-gray-500">
+                                        <span>${order.color === 'bw' ? 'Black & White' : 'Color'}</span>
+                                        <span>${order.copies} copies</span>
+                                        <span>${order.pages} pages</span>
+                                        <span class="font-semibold text-blue-600">₵${order.total.toFixed(2)}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="px-3 py-1 ${statusBg} ${statusColor} rounded-full text-sm font-medium">${order.status.charAt(0).toUpperCase() + order.status.slice(1)}</span>
+                                ${actionBtn}
+                                ${order.status !== 'collected' ? `<button class="text-gray-500 hover:text-gray-700 p-2"><i class="fas fa-download"></i></button>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Initialize
+        updateStats();
+        renderQueue();
     </script>
 </body>
 </html>

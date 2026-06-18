@@ -86,7 +86,7 @@
                                 <i class="fas fa-arrow-up mr-1"></i> 12%
                             </span>
                         </div>
-                        <div class="text-2xl font-bold text-gray-800">1,248</div>
+                        <div class="text-3xl font-bold text-gray-800" id="totalOrders">0</div>
                         <div class="text-gray-500 text-sm">Total Orders</div>
                     </div>
                     <div class="bg-white rounded-2xl p-6 shadow-sm">
@@ -98,7 +98,7 @@
                                 <i class="fas fa-arrow-up mr-1"></i> 8%
                             </span>
                         </div>
-                        <div class="text-2xl font-bold text-gray-800">$4,520</div>
+                        <div class="text-3xl font-bold text-gray-800" id="totalRevenue">₵0.00</div>
                         <div class="text-gray-500 text-sm">Revenue (Month)</div>
                     </div>
                     <div class="bg-white rounded-2xl p-6 shadow-sm">
@@ -110,7 +110,7 @@
                                 <i class="fas fa-arrow-up mr-1"></i> 5%
                             </span>
                         </div>
-                        <div class="text-2xl font-bold text-gray-800">856</div>
+                        <div class="text-3xl font-bold text-gray-800" id="totalUsers">0</div>
                         <div class="text-gray-500 text-sm">Active Users</div>
                     </div>
                     <div class="bg-white rounded-2xl p-6 shadow-sm">
@@ -122,7 +122,7 @@
                                 <i class="fas fa-arrow-up mr-1"></i> 15%
                             </span>
                         </div>
-                        <div class="text-2xl font-bold text-gray-800">18,450</div>
+                        <div class="text-3xl font-bold text-gray-800" id="totalPages">0</div>
                         <div class="text-gray-500 text-sm">Pages Printed</div>
                     </div>
                 </div>
@@ -142,34 +142,8 @@
                     <!-- Recent Activity -->
                     <div class="bg-white rounded-2xl p-6 shadow-sm">
                         <h2 class="text-lg font-semibold text-gray-800 mb-6">Recent Activity</h2>
-                        <div class="space-y-4">
-                            <div class="flex items-start gap-3">
-                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-user-plus text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-800"><span class="font-semibold">New user</span> registered</p>
-                                    <p class="text-xs text-gray-500">5 minutes ago</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-check text-green-600"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-800"><span class="font-semibold">Order #12350</span> completed</p>
-                                    <p class="text-xs text-gray-500">15 minutes ago</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-bell text-yellow-600"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm text-gray-800"><span class="font-semibold">Order #12349</span> placed</p>
-                                    <p class="text-xs text-gray-500">30 minutes ago</p>
-                                </div>
-                            </div>
+                        <div id="recentActivity" class="space-y-4">
+                            <!-- Activity will be rendered here -->
                         </div>
                     </div>
                 </div>
@@ -191,43 +165,8 @@
                                     <th class="pb-4 font-medium">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-sm">
-                                <tr class="border-b">
-                                    <td class="py-4">
-                                        <div class="flex items-center gap-3">
-                                            <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-semibold text-xs">SJ</div>
-                                            <div>
-                                                <div class="font-medium text-gray-800">Sarah Johnson</div>
-                                                <div class="text-gray-500">sarah@university.edu</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="py-4">Student</td>
-                                    <td class="py-4">24</td>
-                                    <td class="py-4"><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs">Active</span></td>
-                                    <td class="py-4">
-                                        <button class="text-gray-500 hover:text-gray-700 mr-2"><i class="fas fa-edit"></i></button>
-                                        <button class="text-gray-500 hover:text-red-500"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                                <tr class="border-b">
-                                    <td class="py-4">
-                                        <div class="flex items-center gap-3">
-                                            <div class="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-semibold text-xs">OP</div>
-                                            <div>
-                                                <div class="font-medium text-gray-800">Print Operator</div>
-                                                <div class="text-gray-500">operator@printnow.com</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="py-4">Operator</td>
-                                    <td class="py-4">-</td>
-                                    <td class="py-4"><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs">Active</span></td>
-                                    <td class="py-4">
-                                        <button class="text-gray-500 hover:text-gray-700 mr-2"><i class="fas fa-edit"></i></button>
-                                        <button class="text-gray-500 hover:text-red-500"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
+                            <tbody id="userTable" class="text-sm">
+                                <!-- Users will be rendered here -->
                             </tbody>
                         </table>
                     </div>
@@ -235,5 +174,114 @@
             </div>
         </main>
     </div>
+
+    <script>
+        // Update stats
+        function updateStats() {
+            const orders = JSON.parse(localStorage.getItem('unidoc_orders') || '[]');
+            const users = JSON.parse(localStorage.getItem('unidoc_users') || '[]');
+            
+            const totalRevenue = orders.reduce((sum, o) => sum + o.total, 0);
+            const totalPages = orders.reduce((sum, o) => sum + (o.pages * o.copies), 0);
+            
+            document.getElementById('totalOrders').textContent = orders.length;
+            document.getElementById('totalRevenue').textContent = '₵' + totalRevenue.toFixed(2);
+            document.getElementById('totalUsers').textContent = users.length;
+            document.getElementById('totalPages').textContent = totalPages;
+        }
+        
+        // Render recent activity
+        function renderRecentActivity() {
+            const orders = JSON.parse(localStorage.getItem('unidoc_orders') || '[]');
+            const users = JSON.parse(localStorage.getItem('unidoc_users') || '[]');
+            
+            const activity = [];
+            
+            users.slice(-3).reverse().forEach(u => {
+                activity.push({
+                    type: 'user',
+                    text: `<span class="font-semibold">${u.firstName} ${u.lastName}</span> registered`,
+                    time: 'Just now'
+                });
+            });
+            
+            orders.slice(-3).reverse().forEach(o => {
+                activity.push({
+                    type: 'order',
+                    text: `<span class="font-semibold">Order #${o.id.slice(-6)}</span> ${o.status}`,
+                    time: '15 min ago'
+                });
+            });
+            
+            const activityList = document.getElementById('recentActivity');
+            activityList.innerHTML = activity.slice(0, 5).map(a => {
+                const icon = a.type === 'user' ? 'fa-user-plus text-blue-600' : 'fa-check text-green-600';
+                const bg = a.type === 'user' ? 'bg-blue-100' : 'bg-green-100';
+                
+                return `
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 ${bg} rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas ${icon}"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-800">${a.text}</p>
+                            <p class="text-xs text-gray-500 mt-1">${a.time}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Render user table
+        function renderUserTable() {
+            const users = JSON.parse(localStorage.getItem('unidoc_users') || '[]');
+            const orders = JSON.parse(localStorage.getItem('unidoc_orders') || '[]');
+            
+            const userTable = document.getElementById('userTable');
+            
+            if (users.length === 0) {
+                userTable.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="py-8 text-center text-gray-500">
+                            <i class="fas fa-users text-3xl mb-2"></i>
+                            <p>No users yet</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            userTable.innerHTML = users.map(u => {
+                const userOrders = orders.filter(o => o.userId === u.id);
+                const initials = `${u.firstName[0]}${u.lastName[0]}`.toUpperCase();
+                
+                return `
+                    <tr class="border-b">
+                        <td class="py-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-semibold text-xs">${initials}</div>
+                                <div>
+                                    <div class="font-medium text-gray-800">${u.firstName} ${u.lastName}</div>
+                                    <div class="text-gray-500 text-xs">${u.email}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="py-4">${u.role}</td>
+                        <td class="py-4">${userOrders.length}</td>
+                        <td class="py-4"><span class="px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs">Active</span></td>
+                        <td class="py-4">
+                            <button class="text-gray-500 hover:text-gray-700 mr-2"><i class="fas fa-edit"></i></button>
+                            <button class="text-gray-500 hover:text-red-500"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        // Initialize
+        updateStats();
+        renderRecentActivity();
+        renderUserTable();
+    </script>
 </body>
 </html>
