@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidoc - Smart Printing for Students</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+        
+        .feature-icon {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-10 h-10 rounded-xl btn-primary flex items-center justify-center">
+                            <i class="fas fa-print text-white text-xl"></i>
+                        </div>
+                        <span class="text-xl font-bold text-slate-800">Unidoc</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-blue-600 font-medium transition">Features</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-blue-600 font-medium transition">How It Works</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-blue-600 font-medium transition">Pricing</a>
+                    <a href="#faq" class="text-gray-600 hover:text-blue-600 font-medium transition">FAQ</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="login.html" class="text-gray-600 hover:text-blue-600 font-medium transition">Login</a>
+                    <a href="dashboard.html" class="btn-primary text-white px-5 py-2.5 rounded-xl font-medium hover:shadow-lg transition">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-32 pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <div class="inline-flex items-center bg-blue-500/20 border border-blue-400/30 rounded-full px-4 py-2 mb-6">
+                        <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+                        <span class="text-blue-200 text-sm font-medium">Now available at your university</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        Print smarter,<br>
+                        <span class="text-blue-400">not harder</span>
+                    </h1>
+                    <p class="text-lg text-slate-300 mb-8 max-w-lg">
+                        Skip the queues, upload your documents online, and get notified when your prints are ready. Fast, easy, and secure.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="dashboard.html" class="btn-primary text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl transition text-center">
+                            <i class="fas fa-upload mr-2"></i> Upload & Print
+                        </a>
+                        <a href="#how-it-works" class="bg-white/10 border border-white/20 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/20 transition text-center">
+                            Learn More
+                        </a>
+                    </div>
+                    <div class="mt-10 flex items-center gap-8">
+                        <div>
+                            <div class="text-3xl font-bold">24/7</div>
+                            <div class="text-slate-400 text-sm">Available</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold">5000+</div>
+                            <div class="text-slate-400 text-sm">Students</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold">4.9</div>
+                            <div class="text-slate-400 text-sm">Rating</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="float-animation">
+                        <div class="bg-white rounded-3xl shadow-2xl p-8">
+                            <div class="flex items-center gap-3 mb-6">
+                                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-file-pdf text-green-600 text-2xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-800">Assignment.pdf</div>
+                                    <div class="text-sm text-gray-500">2.4 MB • 15 pages</div>
+                                </div>
+                            </div>
+                            <div class="space-y-4 mb-6">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Color</span>
+                                    <span class="font-medium">Black & White</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Copies</span>
+                                    <span class="font-medium">2</span>
+                                </div>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-gray-600">Paper Size</span>
+                                    <span class="font-medium">A4</span>
+                                </div>
+                            </div>
+                            <div class="border-t pt-4 flex justify-between items-center">
+                                <div>
+                                    <div class="text-sm text-gray-500">Total</div>
+                                    <div class="text-2xl font-bold text-blue-600">$3.50</div>
+                                </div>
+                                <button class="btn-primary text-white px-6 py-3 rounded-xl font-semibold">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Why Choose Unidoc?</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Everything you need for a hassle-free printing experience on campus.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card-hover bg-gray-50 rounded-2xl p-8">
+                    <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-cloud-upload-alt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Online Upload</h3>
+                    <p class="text-gray-600">Upload your documents anytime, anywhere. No need to wait in line.</p>
+                </div>
+                <div class="card-hover bg-gray-50 rounded-2xl p-8">
+                    <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-bolt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Fast Processing</h3>
+                    <p class="text-gray-600">Get your prints ready in minutes, not hours. Real-time updates.</p>
+                </div>
+                <div class="card-hover bg-gray-50 rounded-2xl p-8">
+                    <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-bell text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Instant Notifications</h3>
+                    <p class="text-gray-600">Receive alerts when your order is ready for pickup.</p>
+                </div>
+                <div class="card-hover bg-gray-50 rounded-2xl p-8">
+                    <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-credit-card text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Secure Payments</h3>
+                    <p class="text-gray-600">Digital payments with multiple options. Safe and encrypted.</p>
+                </div>
+                <div class="card-hover bg-gray-50 rounded-2xl p-8">
+                    <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-history text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Order History</h3>
+                    <p class="text-gray-600">Track all your past orders and reprint easily.</p>
+                </div>
+                <div class="card-hover bg-gray-50 rounded-2xl p-8">
+                    <div class="feature-icon w-14 h-14 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Mobile Friendly</h3>
+                    <p class="text-gray-600">Fully responsive design. Order from your phone on the go.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">How It Works</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Just 3 simple steps to get your documents printed.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 btn-primary rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6">1</div>
+                    <h3 class="text-xl font-bold mb-3">Upload Document</h3>
+                    <p class="text-gray-600">Drag and drop your file or browse from your device.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 btn-primary rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6">2</div>
+                    <h3 class="text-xl font-bold mb-3">Customize & Pay</h3>
+                    <p class="text-gray-600">Choose your options and pay securely online.</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-20 h-20 btn-primary rounded-full flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6">3</div>
+                    <h3 class="text-xl font-bold mb-3">Pick Up</h3>
+                    <p class="text-gray-600">Get notified and collect your prints at your convenience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">No hidden fees. Pay only for what you print.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="card-hover border-2 border-gray-200 rounded-2xl p-8">
+                    <h3 class="text-2xl font-bold mb-2">Black & White</h3>
+                    <div class="text-5xl font-bold text-gray-900 mb-2">$0.10<span class="text-lg text-gray-500">/page</span></div>
+                    <p class="text-gray-600 mb-6">Perfect for assignments and notes</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Standard A4 paper</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Single or double-sided</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Fast processing</li>
+                    </ul>
+                </div>
+                <div class="card-hover border-2 border-blue-500 rounded-2xl p-8 bg-blue-50">
+                    <div class="inline-block bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-4">POPULAR</div>
+                    <h3 class="text-2xl font-bold mb-2">Color</h3>
+                    <div class="text-5xl font-bold text-blue-600 mb-2">$0.50<span class="text-lg text-gray-500">/page</span></div>
+                    <p class="text-gray-600 mb-6">Great for presentations and posters</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> High-quality color</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Premium paper</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Priority printing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">What Students Say</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6">"No more waiting in long lines! Unidoc has saved me so much time between classes."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold mr-4">SJ</div>
+                        <div>
+                            <div class="font-semibold">Sarah Johnson</div>
+                            <div class="text-sm text-gray-500">Computer Science</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-8">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6">"Super easy to use and the notifications are a game-changer. Highly recommend!"</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold mr-4">MK</div>
+                        <div>
+                            <div class="font-semibold">Mike Kim</div>
+                            <div class="text-sm text-gray-500">Business Administration</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-8">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 mb-6">"The price calculator is amazing. I always know exactly what I'm paying upfront."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 font-bold mr-4">EW</div>
+                        <div>
+                            <div class="font-semibold">Emily Williams</div>
+                            <div class="text-sm text-gray-500">Biology</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+            </div>
+            <div class="space-y-4">
+                <div class="border rounded-xl p-6">
+                    <h3 class="font-semibold text-lg mb-2">What file formats are supported?</h3>
+                    <p class="text-gray-600">We support PDF, DOCX, PPTX, and most common document formats.</p>
+                </div>
+                <div class="border rounded-xl p-6">
+                    <h3 class="font-semibold text-lg mb-2">How long does printing take?</h3>
+                    <p class="text-gray-600">Most orders are ready within 15-30 minutes during business hours.</p>
+                </div>
+                <div class="border rounded-xl p-6">
+                    <h3 class="font-semibold text-lg mb-2">Is my payment information secure?</h3>
+                    <p class="text-gray-600">Yes, all payments are encrypted and processed securely.</p>
+                </div>
+                <div class="border rounded-xl p-6">
+                    <h3 class="font-semibold text-lg mb-2">Can I cancel my order?</h3>
+                    <p class="text-gray-600">You can cancel orders that haven't started printing yet from your dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-blue-600">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Print Smarter?</h2>
+            <p class="text-blue-100 text-lg mb-8">Join thousands of students already using Unidoc.</p>
+            <a href="dashboard.html" class="bg-white text-blue-600 px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-2xl transition inline-block">Get Started Free</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 rounded-xl btn-primary flex items-center justify-center">
+                            <i class="fas fa-print text-white text-xl"></i>
+                        </div>
+                        <span class="text-xl font-bold text-white">Unidoc</span>
+                    </div>
+                    <p class="text-sm">Smart printing solutions for university students.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Product</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#features" class="hover:text-white transition">Features</a></li>
+                        <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white transition">FAQ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">About</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-12 pt-8 text-center text-sm">
+                <p>&copy; 2024 Unidoc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

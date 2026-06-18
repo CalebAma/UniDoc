@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Unidoc</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        * { font-family: 'Inter', sans-serif; }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4">
+    <div class="max-w-md w-full">
+        <div class="text-center mb-8">
+            <a href="index.html" class="inline-flex items-center space-x-2 mb-6">
+                <div class="w-12 h-12 rounded-xl btn-primary flex items-center justify-center">
+                    <i class="fas fa-print text-white text-2xl"></i>
+                </div>
+                <span class="text-2xl font-bold text-white">Unidoc</span>
+            </a>
+            <h1 class="text-3xl font-bold text-white mb-2">Welcome back</h1>
+            <p class="text-slate-400">Sign in to your account</p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-2xl p-8">
+            <form name="login" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="login">
+                <p class="hidden">
+                    <label>Don't fill this out: <input name="bot-field"></label>
+                </p>
+                <div class="space-y-5">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <input type="email" name="email" required class="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="you@university.edu">
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="block text-sm font-medium text-gray-700">Password</label>
+                            <a href="forgot-password.html" class="text-sm text-blue-600 hover:text-blue-800">Forgot password?</a>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <input type="password" name="password" required class="w-full pl-11 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="••••••••">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full btn-primary text-white py-3 rounded-xl font-semibold hover:shadow-lg transition">
+                        Sign In
+                    </button>
+                </div>
+            </form>
+            <div class="mt-6 text-center text-sm text-gray-600">
+                Don't have an account? <a href="register.html" class="text-blue-600 font-semibold hover:text-blue-800">Sign up</a>
+            </div>
+            <div class="mt-4 text-center">
+                <a href="index.html" class="text-sm text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-arrow-left mr-1"></i> Back to home
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - Unidoc</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        * { font-family: 'Inter', sans-serif; }
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="w-10 h-10 rounded-xl btn-primary flex items-center justify-center">
+                            <i class="fas fa-print text-white text-xl"></i>
+                        </div>
+                        <span class="text-xl font-bold text-slate-800">Unidoc</span>
+                    </a>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button class="relative p-2 text-gray-500 hover:text-blue-600">
+                        <i class="fas fa-bell text-xl"></i>
+                        <span class="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full"></span>
+                    </button>
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-semibold">JD</div>
+                        <div class="hidden md:block">
+                            <div class="text-sm font-semibold text-gray-800">John Doe</div>
+                            <div class="text-xs text-gray-500">Student</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-sm min-h-screen hidden md:block">
+            <div class="p-4">
+                <nav class="space-y-2">
+                    <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 font-medium">
+                        <i class="fas fa-home"></i> Dashboard
+                    </a>
+                    <a href="orders.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-blue-50 text-blue-600 font-medium">
+                        <i class="fas fa-receipt"></i> Orders
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 font-medium">
+                        <i class="fas fa-wallet"></i> Wallet
+                    </a>
+                    <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 font-medium">
+                        <i class="fas fa-cog"></i> Settings
+                    </a>
+                    <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-gray-50 font-medium mt-8">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-800 mb-2">Your Orders</h1>
+                        <p class="text-gray-600">Track the status of your print orders</p>
+                    </div>
+                    <a href="dashboard.html" class="btn-primary text-white px-6 py-3 rounded-xl font-medium mt-4 md:mt-0 inline-flex items-center">
+                        <i class="fas fa-plus mr-2"></i> New Order
+                    </a>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="flex gap-4 mb-6 overflow-x-auto pb-2">
+                    <button class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium whitespace-nowrap">All</button>
+                    <button class="px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-200 font-medium whitespace-nowrap">Pending</button>
+                    <button class="px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-200 font-medium whitespace-nowrap">Printing</button>
+                    <button class="px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-200 font-medium whitespace-nowrap">Ready</button>
+                    <button class="px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-200 font-medium whitespace-nowrap">Completed</button>
+                </div>
+
+                <!-- Orders List -->
+                <div class="space-y-4">
+                    <!-- Order 1 - Ready -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-file-pdf text-green-600 text-2xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-800">Assignment.pdf</div>
+                                    <div class="text-sm text-gray-500">Order #PN12345 • Today, 10:30 AM</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium flex items-center">
+                                    <i class="fas fa-check-circle mr-1"></i> Ready for Pickup
+                                </span>
+                                <button class="btn-primary text-white px-4 py-2 rounded-lg font-medium text-sm">View</button>
+                            </div>
+                        </div>
+                        <div class="border-t pt-4 flex flex-wrap gap-6 text-sm text-gray-600">
+                            <div><span class="font-medium text-gray-800">Color:</span> Black & White</div>
+                            <div><span class="font-medium text-gray-800">Copies:</span> 2</div>
+                            <div><span class="font-medium text-gray-800">Pages:</span> 15</div>
+                            <div><span class="font-medium text-gray-800">Total:</span> <span class="text-blue-600 font-bold text-base">$3.00</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Order 2 - Printing -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-file-powerpoint text-blue-600 text-2xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-800">Presentation.pptx</div>
+                                    <div class="text-sm text-gray-500">Order #PN12344 • Today, 9:15 AM</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium flex items-center">
+                                    <i class="fas fa-spinner fa-spin mr-1"></i> Printing
+                                </span>
+                                <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium text-sm hover:bg-gray-50">View</button>
+                            </div>
+                        </div>
+                        <div class="border-t pt-4 flex flex-wrap gap-6 text-sm text-gray-600">
+                            <div><span class="font-medium text-gray-800">Color:</span> Color</div>
+                            <div><span class="font-medium text-gray-800">Copies:</span> 1</div>
+                            <div><span class="font-medium text-gray-800">Pages:</span> 20</div>
+                            <div><span class="font-medium text-gray-800">Total:</span> <span class="text-blue-600 font-bold text-base">$10.00</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Order 3 - Completed -->
+                    <div class="bg-white rounded-2xl p-6 shadow-sm">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center">
+                                    <i class="fas fa-file-word text-gray-600 text-2xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-gray-800">Essay.docx</div>
+                                    <div class="text-sm text-gray-500">Order #PN12343 • Yesterday, 3:45 PM</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium flex items-center">
+                                    <i class="fas fa-archive mr-1"></i> Collected
+                                </span>
+                                <button class="border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium text-sm hover:bg-gray-50">View</button>
+                            </div>
+                        </div>
+                        <div class="border-t pt-4 flex flex-wrap gap-6 text-sm text-gray-600">
+                            <div><span class="font-medium text-gray-800">Color:</span> Black & White</div>
+                            <div><span class="font-medium text-gray-800">Copies:</span> 1</div>
+                            <div><span class="font-medium text-gray-800">Pages:</span> 8</div>
+                            <div><span class="font-medium text-gray-800">Total:</span> <span class="text-blue-600 font-bold text-base">$0.80</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
