@@ -278,6 +278,15 @@
             }).join('');
         }
         
+        // Listen for storage changes (real-time updates from other tabs/pages)
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'unidoc_orders' || e.key === 'unidoc_users') {
+                updateStats();
+                renderRecentActivity();
+                renderUserTable();
+            }
+        });
+
         // Initialize
         updateStats();
         renderRecentActivity();

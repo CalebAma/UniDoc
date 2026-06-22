@@ -190,21 +190,21 @@
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-3">Color</label>
                                         <div class="grid grid-cols-2 gap-3">
-                                            <label class="cursor-pointer">
-                                                <input type="radio" name="color" value="bw" class="peer hidden" onchange="calculatePrice()" checked>
-                                                <div class="border-2 border-gray-200 rounded-xl p-4 text-center peer-checked:border-blue-500 peer-checked:bg-blue-50 transition">
-                                                    <div class="text-gray-700 font-medium">Black & White</div>
-                                                    <div class="text-gray-500 text-sm">₵0.10/page</div>
-                                                </div>
-                                            </label>
-                                            <label class="cursor-pointer">
-                                                <input type="radio" name="color" value="color" class="peer hidden" onchange="calculatePrice()">
-                                                <div class="border-2 border-gray-200 rounded-xl p-4 text-center peer-checked:border-blue-500 peer-checked:bg-blue-50 transition">
-                                                    <div class="text-gray-700 font-medium">Color</div>
-                                                    <div class="text-gray-500 text-sm">₵0.50/page</div>
-                                                </div>
-                                            </label>
-                                        </div>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="color" value="bw" class="peer hidden" onchange="calculatePrice()" checked>
+                            <div class="border-2 border-gray-200 rounded-xl p-4 text-center peer-checked:border-blue-500 peer-checked:bg-blue-50 transition">
+                                <div class="text-gray-700 font-medium">Black & White</div>
+                                <div class="text-gray-500 text-sm">₵0.50/page</div>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="color" value="color" class="peer hidden" onchange="calculatePrice()">
+                            <div class="border-2 border-gray-200 rounded-xl p-4 text-center peer-checked:border-blue-500 peer-checked:bg-blue-50 transition">
+                                <div class="text-gray-700 font-medium">Color</div>
+                                <div class="text-gray-500 text-sm">₵2.00/page</div>
+                            </div>
+                        </label>
+                    </div>
                                     </div>
 
                                     <!-- Pages -->
@@ -423,43 +423,43 @@
             const colorOption = document.querySelector('input[name="color"]:checked').value;
             const copies = parseInt(document.getElementById('copiesInput').value);
             const binding = document.getElementById('bindingSelect').value;
-            
-            const pricePerPage = colorOption === 'color' ? 0.5 : 0.1;
+
+            const pricePerPage = colorOption === 'color' ? 2.0 : 0.5;
             let bindingPrice = 0;
             if (binding === 'staple') bindingPrice = 0.5;
             if (binding === 'spiral') bindingPrice = 2.0;
-            
+
             const total = (pricePerPage * estimatedPages * copies) + bindingPrice;
-            
+
             document.getElementById('summaryCopies').textContent = copies;
             document.getElementById('summaryColor').textContent = colorOption === 'color' ? 'Color' : 'Black & White';
             document.getElementById('totalPrice').textContent = '₵' + total.toFixed(2);
         }
-        
+
         // Place order
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             const user = JSON.parse(localStorage.getItem('unidoc_currentUser'));
             if (!user) {
                 alert('Please login first!');
                 window.location.href = 'login.html';
                 return;
             }
-            
+
             if (!selectedFile) {
                 alert('Please upload a document first!');
                 return;
             }
-            
+
             const colorOption = document.querySelector('input[name="color"]:checked').value;
             const sided = document.querySelector('input[name="sided"]:checked').value;
             const copies = parseInt(document.getElementById('copiesInput').value);
             const paperSize = document.querySelector('select[name="paperSize"]').value;
             const binding = document.getElementById('bindingSelect').value;
-            
+
             // Calculate total
-            const pricePerPage = colorOption === 'color' ? 0.5 : 0.1;
+            const pricePerPage = colorOption === 'color' ? 2.0 : 0.5;
             let bindingPrice = 0;
             if (binding === 'staple') bindingPrice = 0.5;
             if (binding === 'spiral') bindingPrice = 2.0;
@@ -494,6 +494,17 @@
             window.location.href = 'orders.html';
         });
         
+        // Listen for storage changes (real-time updates from other tabs/pages)
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'unidoc_orders' || e.key === 'unidoc_users' || e.key === 'unidoc_currentUser') {
+                updateStats();
+                // If currentUser changed, re-check auth
+                if (e.key === 'unidoc_currentUser') {
+                    checkAuth();
+                }
+            }
+        });
+
         // Initialize
         checkAuth();
     </script>
